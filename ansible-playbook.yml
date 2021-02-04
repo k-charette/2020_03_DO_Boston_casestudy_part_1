@@ -1,0 +1,10 @@
+- hosts: webservers
+  tasks:
+  - name: copy deployment file to kubernetes master 
+    copy:
+      src: ./kubernetes.yml
+      dest: /etc/
+  # - name: delete the previous of kubernetes objects 
+  #   command: kubectl delete -f /etc/kubernetes.yml
+  - name: Create a Deployment by reading the definition from a local file
+    command: kubectl apply -f /etc/kubernetes.yml
